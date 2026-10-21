@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Omutima Homes & Tool Hire</title>
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Supabase SDK & Config -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+</head>
+<body style="background-color: #f4f6f8; padding: 2rem;">
+
+  <main style="max-width: 900px; margin: 0 auto;">
+    
+    <!-- 1. INCOMING MESSAGES INBOX -->
+    <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+      <h2 style="margin-bottom: 1.5rem; color: #1a1a1a; border-bottom: 2px solid #25d366; padding-bottom: 0.5rem;">📬 Client Inquiries & Messages</h2>
+      
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+          <thead>
+            <tr style="background: #0d1b2a; color: white;">
+              <th style="padding: 0.8rem;">Date / Time</th>
+              <th style="padding: 0.8rem;">Name</th>
+              <th style="padding: 0.8rem;">Inquiry Type</th>
+              <th style="padding: 0.8rem;">Message</th>
+            </tr>
+          </thead>
+          <tbody id="admin-messages-table">
+            <tr><td colspan="4" style="text-align: center; padding: 1.5rem; color: #666;">Loading messages...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 2. UPLOAD NEW LISTING -->
+    <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+      <h2 style="margin-bottom: 1.5rem; color: #1a1a1a; border-bottom: 2px solid #f39c12; padding-bottom: 0.5rem;">Add New Tool / Listing</h2>
+      
+      <form id="upload-form" onsubmit="handleAdminUpload(event)">
+        <div style="margin-bottom: 1.2rem;">
+          <label style="display:block; margin-bottom: 0.5rem; font-weight: 600;">Category:</label>
+          <select id="category" style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px;">
+            <option value="tool-hire">Tool Hire Equipment (Rental)</option>
+            <option value="tool-sale">Tools For Sale (Purchase)</option>
+            <option value="development">Real Estate Development</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 1.2rem;">
+          <label style="display:block; margin-bottom: 0.5rem; font-weight: 600;">Item Title / Name:</label>
+          <input type="text" id="title" required placeholder="e.g. Heavy Duty Concrete Mixer or Angle Grinder" style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <div style="margin-bottom: 1.2rem;">
+          <label style="display:block; margin-bottom: 0.5rem; font-weight: 600;">Price / Rate:</label>
+          <input type="text" id="price" required placeholder="N$ 499.00" style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <div style="margin-bottom: 1.2rem;">
+          <label style="display:block; margin-bottom: 0.5rem; font-weight: 600;">Description:</label>
+          <textarea id="description" rows="3" placeholder="Brief details..." style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <label style="display:block; margin-bottom: 0.5rem; font-weight: 600;">Equipment Image:</label>
+          <input type="file" id="imageFile" accept="image/*" required style="width: 100%; padding: 0.5rem; border: 1px dashed #ccc; border-radius: 4px;">
+        </div>
+
+        <button type="submit" id="submit-btn" style="background: #f39c12; color: white; border: none; padding: 0.9rem 1.5rem; font-size: 1rem; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Upload & Publish Item</button>
+      </form>
+    </div>
+
+    <!-- 3. MANAGE & DELETE LISTINGS -->
+    <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <h2 style="margin-bottom: 1.5rem; color: #1a1a1a; border-bottom: 2px solid #800020; padding-bottom: 0.5rem;">Manage & Delete Active Listings</h2>
+      
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+          <thead>
+            <tr style="background: #0d1b2a; color: white;">
+              <th style="padding: 0.8rem;">Image</th>
+              <th style="padding: 0.8rem;">Title</th>
+              <th style="padding: 0.8rem;">Category</th>
+              <th style="padding: 0.8rem;">Price</th>
+              <th style="padding: 0.8rem;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="admin-listings-table">
+            <!-- Dynamically populated rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 1.5rem;">
+      <a href="tool-hire.html" style="color: #666; text-decoration: none;">&larr; Back to Tool Hire Page</a>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      loadAdminMessages();
+      loadAdminListings();
+    });
+
+    // Fetch and Display Messages Inbox
+    async function loadAdminMessages() {
+      const tableBody = document.getElementById('admin-messages-table');
+      const client = window._supabase || _supabase;
+      if (!client) return;
+
+      const { data, error } = await client
+        .from('messages')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        tableBody.innerHTML = `<tr><td colspan="4" style="text-align: center; padding: 1rem; color: red;">Error loading messages: ${error.message}</td></tr>`;
+        return;
+      }
+
+      tableBody.innerHTML = '';
+      if (data && data.length > 0) {
+        data.forEach(item => {
+          const row = document.createElement('tr');
+          row.style.borderBottom = '1px solid #e2e8f0';
+          const dateStr = new Date(item.created_at).toLocaleString();
+
+          row.innerHTML = `
+            <td style="padding: 0.8rem; white-space: nowrap; color: #555; font-size: 0.85rem;">${dateStr}</td>
+            <td style="padding: 0.8rem; font-weight: 600;">${item.name}</td>
+            <td style="padding: 0.8rem; color: #0d1b2a; font-weight: 500;">${item.inquiry_type}</td>
+            <td style="padding: 0.8rem; color: #333;">${item.message}</td>
+          `;
+          tableBody.appendChild(row);
+        });
+      } else {
+        tableBody.innerHTML = `<tr><td colspan="4" style="text-align: center; padding: 1.5rem; color: #666;">No messages received yet.</td></tr>`;
+      }
+    }
+
+    // Fetch and Display Listings for Management
+    async function loadAdminListings() {
+      const tableBody = document.getElementById('admin-listings-table');
+      const client = window._supabase || _supabase;
+      if (!client) return;
+
+      const { data, error } = await client
+        .from('listings')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) return;
+
+      tableBody.innerHTML = '';
+      if (data && data.length > 0) {
+        data.forEach(item => {
+          const row = document.createElement('tr');
+          row.style.borderBottom = '1px solid #e2e8f0';
+          const imageUrl = item.image_url || 'https://via.placeholder.com/40?text=Item';
+
+          row.innerHTML = `
+            <td style="padding: 0.8rem;"><img src="${imageUrl}" alt="${item.title}" style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;"></td>
+            <td style="padding: 0.8rem; font-weight: 600;">${item.title}</td>
+            <td style="padding: 0.8rem; color: #555; text-transform: capitalize;">${item.category.replace('-', ' ')}</td>
+            <td style="padding: 0.8rem; color: #800020; font-weight: bold;">${item.price}</td>
+            <td style="padding: 0.8rem;">
+              <button onclick="deleteListing('${item.id}')" style="background: #e74c3c; color: white; border: none; padding: 0.4rem 0.8rem; border-radius: 4px; cursor: pointer; font-weight: bold;">Delete</button>
+            </td>
+          `;
+          tableBody.appendChild(row);
+        });
+      } else {
+        tableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 1.5rem; color: #666;">No listings found.</td></tr>`;
+      }
+    }
+
+    async function deleteListing(id) {
+      if (!confirm('Are you sure you want to delete this listing?')) return;
+      const client = window._supabase || _supabase;
+      if (!client) return;
+
+      const { error } = await client.from('listings').delete().eq('id', id);
+      if (error) {
+        alert('Error deleting item: ' + error.message);
+      } else {
+        alert('Item successfully deleted.');
+        loadAdminListings();
+      }
+    }
+
+    async function handleAdminUpload(event) {
+      event.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.innerText = 'Uploading image & saving...';
+
+      const category = document.getElementById('category').value;
+      const title = document.getElementById('title').value;
+      const price = document.getElementById('price').value;
+      const description = document.getElementById('description').value;
+      const fileInput = document.getElementById('imageFile');
+      const file = fileInput.files[0];
+
+      const client = window._supabase || _supabase;
+      if (!client) {
+        alert('Supabase client not initialized.');
+        btn.disabled = false;
+        btn.innerText = 'Upload & Publish Item';
+        return;
+      }
+
+      try {
+        const fileName = `${Date.now()}_${file.name.replace(/\s+/g, '_')}`;
+        const { data: uploadData, error: uploadError } = await client.storage
+          .from('property-images')
+          .upload(fileName, file);
+
+        if (uploadError) throw uploadError;
+
+        const { data: publicUrlData } = client.storage
+          .from('property-images')
+          .getPublicUrl(fileName);
+
+        const imageUrl = publicUrlData.publicUrl;
+
+        const { error: dbError } = await client
+          .from('listings')
+          .insert([{ title, price, description, image_url: imageUrl, category }]);
+
+        if (dbError) throw dbError;
+
+        document.getElementById('upload-form').reset();
+        loadAdminListings();
+        alert('Success! Item uploaded and published.');
+      } catch (err) {
+        alert('Error: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerText = 'Upload & Publish Item';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,271 @@
+/* --- Google Fonts & Variables --- */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --navy: #0F1D2E;
+  --navy-light: #1A2E46;
+  --burgundy: #8B0000;
+  --burgundy-hover: #6B0000;
+  --gold: #D4AF37;
+  --gold-hover: #B59325;
+  --gold-bg: #EAB308;
+  --bg-light: #F8FAFC;
+  --text-main: #1E293B;
+  --text-muted: #64748B;
+  --white: #FFFFFF;
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 25px -5px rgba(15, 29, 46, 0.12);
+  --radius: 16px;
+}
+
+/* --- Global Resets --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* --- Layout Container --- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+/* --- Header / Navigation --- */
+.site-header {
+  background: var(--navy);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.logo {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: #CBD5E1;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  background: linear-gradient(135deg, rgba(15, 29, 46, 0.92) 0%, rgba(26, 46, 70, 0.85) 100%),
+              url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  color: var(--white);
+  padding: 6rem 1.5rem;
+  text-align: center;
+}
+
+.hero-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+
+.hero-section p {
+  font-size: 1.15rem;
+  color: #E2E8F0;
+  margin-bottom: 2.5rem;
+}
+
+/* --- Section Header --- */
+.section-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 3.5rem auto;
+}
+
+.section-header h2 {
+  font-size: 2.25rem;
+  color: var(--navy);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.section-header p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+/* --- Core Services Grid --- */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+/* --- White Card Design (Image 1 Style) --- */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  padding: 2.5rem 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Featured / Popular Card Styling */
+.card-featured {
+  border: 2px solid #EAB308;
+}
+
+.card-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #EAB308;
+  color: #0F1D2E;
+  font-weight: 800;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.3rem 1.2rem;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* Icon Container Boxes */
+.card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.navy-icon { background: #F1F5F9; color: var(--navy); }
+.gold-icon { background: #FEF9C3; color: #854D0E; }
+.burgundy-icon { background: #FEE2E2; color: var(--burgundy); }
+
+.card h3 {
+  font-size: 1.4rem;
+  color: var(--navy);
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+.card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+/* Buttons */
+.btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 0.85rem 1.2rem;
+  font-weight: 700;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  margin-top: auto;
+}
+
+.btn-burgundy {
+  background: var(--burgundy);
+  color: var(--white);
+}
+
+.btn-burgundy:hover {
+  background: var(--burgundy-hover);
+}
+
+.btn-gold {
+  background: var(--gold-bg);
+  color: #0F1D2E;
+}
+
+.btn-gold:hover {
+  background: #CA8A04;
+}
+
+/* --- Footer --- */
+footer {
+  background: var(--navy);
+  color: #94A3B8;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  font-size: 0.9rem;
+  margin-top: 4rem;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .site-header { flex-direction: column; gap: 1rem; }
+  .hero-section h1 { font-size: 2.2rem; }
+  .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+}

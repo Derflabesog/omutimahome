@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Omutima Homes</title>
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Supabase SDK & Config -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <a href="index.html" class="logo">Omutima <span>Homes</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="developments.html">Developments</a></li>
+      <li><a href="tool-hire.html">Okahandja Tool Hire</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <span class="hero-badge">Get In Touch</span>
+      <h1>Contact Omutima Homes</h1>
+      <p>Have questions about property purchases, pre-approval requirements, housing plans, or equipment hire? We are here to assist you.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 1rem;">
+      
+      <!-- Contact Info Card -->
+      <div style="background: white; padding: 2rem; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+        <h2 style="color: #0d1b2a; margin-bottom: 1.5rem; border-bottom: 2px solid #d4af37; padding-bottom: 0.5rem; font-size: 1.4rem;">Direct Details</h2>
+        
+        <div style="margin-bottom: 1.2rem;">
+          <strong style="display: block; color: #800020; font-size: 0.9rem; text-transform: uppercase;">Direct Line / WhatsApp:</strong>
+          <span style="font-size: 1.1rem; font-weight: 600;">+264 81 778 0406</span>
+        </div>
+
+        <div style="margin-bottom: 1.2rem;">
+          <strong style="display: block; color: #800020; font-size: 0.9rem; text-transform: uppercase;">Email Address:</strong>
+          <span style="font-size: 1rem;">admin@rimonnamibia.com</span>
+        </div>
+
+        <div style="margin-bottom: 1.2rem;">
+          <strong style="display: block; color: #800020; font-size: 0.9rem; text-transform: uppercase;">Location:</strong>
+          <span style="font-size: 1rem;">Okahandja, Namibia</span>
+        </div>
+
+        <div>
+          <strong style="display: block; color: #800020; font-size: 0.9rem; text-transform: uppercase;">Tool Hire Shop:</strong>
+          <span style="font-size: 1rem;">Bahnhof Street, Shop No. 42 (Behind Okahandja Medical Center), Okahandja</span>
+        </div>
+
+        <div style="margin-top: 1.5rem; background: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px dashed #cbd5e1;">
+          <p style="margin: 0; font-size: 0.88rem; color: #444; line-height: 1.5;">
+            💡 <strong>Paperwork Assistance:</strong> Don't have time to handle bank paperwork? We will handle it for you completely free of charge!
+          </p>
+        </div>
+      </div>
+
+      <!-- Contact Form Card -->
+      <div style="background: white; padding: 2rem; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+        <h2 style="color: #0d1b2a; margin-bottom: 1.5rem; border-bottom: 2px solid #d4af37; padding-bottom: 0.5rem; font-size: 1.4rem;">Send Us A Message</h2>
+        
+        <form id="contact-form" onsubmit="handleContactSubmit(event)">
+          <div style="margin-bottom: 1.2rem;">
+            <label style="display: block; margin-bottom: 0.4rem; font-weight: 600; color: #333;">Full Name:</label>
+            <input type="text" id="contact-name" required placeholder="Your name" style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px; font-size: 0.95rem;">
+          </div>
+
+          <div style="margin-bottom: 1.2rem;">
+            <label style="display: block; margin-bottom: 0.4rem; font-weight: 600; color: #333;">Inquiry Type:</label>
+            <select id="inquiry-type" style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px; font-size: 0.95rem; background: white;">
+              <option value="Omutima Homes (Property Development)">Omutima Homes (Property Development)</option>
+              <option value="Home Loan Pre-Approval Assistance">Home Loan Pre-Approval Assistance</option>
+              <option value="Okahandja Tool Hire (Equipment Rental)">Okahandja Tool Hire (Equipment Rental)</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <label style="display: block; margin-bottom: 0.4rem; font-weight: 600; color: #333;">Message / Requirements:</label>
+            <textarea id="contact-message" rows="4" required placeholder="Tell us about your housing or equipment needs..." style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px; font-size: 0.95rem;"></textarea>
+          </div>
+
+          <button type="submit" id="contact-btn" class="btn btn-gold full-width" style="border: none; cursor: pointer; padding: 0.9rem; font-weight: bold; font-size: 1rem;">Send Message & Open WhatsApp &rarr;</button>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Omutima Homes & Okahandja Tool Hire. All Rights Reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Automatically select subject if query string has ?tool= or ?property=
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const inquirySelect = document.getElementById('inquiry-type');
+      if (urlParams.has('tool') && inquirySelect) {
+        inquirySelect.value = 'Okahandja Tool Hire (Equipment Rental)';
+      }
+    });
+
+    async function handleContactSubmit(event) {
+      event.preventDefault();
+      const btn = document.getElementById('contact-btn');
+      btn.disabled = true;
+      btn.innerText = 'Saving & opening WhatsApp...';
+
+      const name = document.getElementById('contact-name').value;
+      const inquiry_type = document.getElementById('inquiry-type').value;
+      const message = document.getElementById('contact-message').value;
+
+      const client = window._supabase || _supabase;
+      if (client) {
+        // Save to Supabase database
+        await client.from('messages').insert([{ name, inquiry_type, message }]);
+      }
+
+      // Format message for WhatsApp
+      const whatsappNumber = "264817780406";
+      const text = `Hello Omutima Homes,%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Inquiry:* ${encodeURIComponent(inquiry_type)}%0A*Message:* ${encodeURIComponent(message)}`;
+      
+      // Reset form and open WhatsApp
+      document.getElementById('contact-form').reset();
+      btn.disabled = false;
+      btn.innerText = 'Send Message & Open WhatsApp →';
+
+      window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Developments | Omutima Homes</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Supabase SDK & Config -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <a href="index.html" class="logo">Omutima <span>Homes</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="developments.html" class="active">Developments</a></li>
+      <li><a href="tool-hire.html">Okahandja Tool Hire</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <span class="hero-badge">Our Portfolio</span>
+      <h1>Residential Developments</h1>
+      <p>Explore modern, family-focused housing projects and construction solutions across Okahandja and prime Namibian locations.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="section-header">
+      <h2>Featured Projects</h2>
+      <p>Designed for comfort, security, and long-term value.</p>
+    </div>
+
+    <!-- Dynamic Container ID -->
+    <div id="developments-container" class="services-grid">
+      <!-- Project 1 -->
+      <article class="card">
+        <div class="card-body">
+          <div class="card-icon navy-icon">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+          </div>
+          <h3>Dolerite Ridge Estates</h3>
+          <p>Modern 2 & 3 bedroom family homes featuring quality finishes, open-plan living, and optional solar energy packages in Okahandja.</p>
+        </div>
+        <div class="card-footer">
+          <a href="contact.html" class="btn btn-burgundy full-width">Inquire Plans &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Project 2 (Featured) -->
+      <article class="card card-featured">
+        <div class="card-badge">Popular</div>
+        <div class="card-body">
+          <div class="card-icon gold-icon">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+          </div>
+          <h3>Osona Village Extensions</h3>
+          <p>Affordable housing solutions designed for growing families and first-time homebuyers with easy access to transport corridors.</p>
+        </div>
+        <div class="card-footer">
+          <a href="contact.html" class="btn btn-gold full-width">Inquire Plans &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="card">
+        <div class="card-body">
+          <div class="card-icon burgundy-icon">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+            </svg>
+          </div>
+          <h3>Custom Plot & Plan</h3>
+          <p>Already own land? We offer full turnkey architectural, planning, and construction services built to your exact preferences.</p>
+        </div>
+        <div class="card-footer">
+          <a href="contact.html" class="btn btn-burgundy full-width">Consult Architect &rarr;</a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Homeownership Guide Section -->
+    <section style="margin-top: 4rem; background: #ffffff; padding: 2.5rem; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <span style="background: #eaf6fb; color: #0d1b2a; padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: bold; font-size: 0.85rem; text-transform: uppercase;">Easy Process</span>
+        <h2 style="color: #0d1b2a; margin-top: 0.5rem; font-size: 1.8rem;">Do You Know You Are Just A Few Steps To Owning Your Home?</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2.5rem;">
+        
+        <!-- STEP 1 -->
+        <div style="background: #f8fafc; padding: 1.5rem; border-radius: 6px; border-left: 4px solid #800020;">
+          <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
+            <span style="background: #800020; color: white; padding: 0.3rem 0.8rem; border-radius: 4px; font-weight: bold; font-size: 0.9rem;">STEP 1</span>
+            <h3 style="margin: 0; font-size: 1.15rem; color: #0d1b2a;">Pre-Approval Requirements</h3>
+          </div>
+          <ul style="padding-left: 1.2rem; margin: 0; line-height: 1.7; font-size: 0.92rem; color: #444;">
+            <li>ID (certified, not older than 6 months)</li>
+            <li>Spouse ID (if applicable)</li>
+            <li>Marriage Certificate (if applicable)</li>
+            <li>If Ante Nuptial (ANC contract)</li>
+            <li>Divorce Letter (if applicable)</li>
+            <li>3 months Bank Statements (if applicable, for spouse as well)</li>
+            <li>Bank Confirmation Letter (if applicable, for both)</li>
+            <li>Pay slip (latest)</li>
+            <li>Client gets commission/overtime (6 months pay slips)</li>
+            <li>If you are in community of property, kindly provide the spouse's 3 months bank statement and pay slip as well.</li>
+          </ul>
+        </div>
+
+        <!-- STEP 2 -->
+        <div style="background: #f8fafc; padding: 1.5rem; border-radius: 6px; border-left: 4px solid #d4af37;">
+          <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
+            <span style="background: #d4af37; color: #0d1b2a; padding: 0.3rem 0.8rem; border-radius: 4px; font-weight: bold; font-size: 0.9rem;">STEP 2</span>
+            <h3 style="margin: 0; font-size: 1.15rem; color: #0d1b2a;">Choose Your House Design & Erf</h3>
+          </div>
+          <p style="margin: 0 0 1rem 0; line-height: 1.6; font-size: 0.95rem; color: #444;">
+            Come for consultation, choose your plot and house plan, sign your purchase agreement.
+          </p>
+          <a href="contact.html" class="btn btn-gold full-width" style="text-align: center; display: block;">Book Consultation &rarr;</a>
+        </div>
+
+      </div>
+
+      <!-- FAQ SECTION -->
+      <div style="background: #f1f5f9; padding: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1;">
+        <h3 style="margin-top: 0; color: #0d1b2a; border-bottom: 2px solid #800020; padding-bottom: 0.5rem; display: inline-block; font-size: 1.2rem;">Frequently Asked Questions</h3>
+        
+        <div style="margin-top: 1rem;">
+          <p style="margin: 0; font-weight: bold; color: #0d1b2a;">Q: From what salary can one qualify for a pre-approval?</p>
+          <p style="margin: 0.2rem 0 1rem 0; color: #333; font-size: 0.95rem;"><strong>A:</strong> You should at least be earning from N$8,000.</p>
+          
+          <p style="margin: 0; font-weight: bold; color: #0d1b2a;">Q: I do not have time to do the paperwork, can you help?</p>
+          <p style="margin: 0.2rem 0 0 0; color: #333; font-size: 0.95rem;"><strong>A:</strong> Yes, we will handle it for you without charges.</p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Omutima Homes & Okahandja Tool Hire. All Rights Reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

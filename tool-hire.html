@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Okahandja Tool Hire | Omutima Homes</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Supabase SDK & Config -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <a href="index.html" class="logo">Omutima <span>Homes</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="developments.html">Developments</a></li>
+      <li><a href="tool-hire.html" class="active">Okahandja Tool Hire</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <span class="hero-badge">Equipment Rental, Sales & Services</span>
+      <h1>Okahandja Tool & Equipment Hire</h1>
+      <p>Reliable equipment, power tool retail, and professional lawn care services for contractors, homeowners, and DIY projects across Okahandja.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+    
+    <!-- Contact Info Banner -->
+    <div style="background: white; padding: 1rem 1.5rem; border-radius: 8px; border: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+      <div>
+        <strong style="color: #800020; font-size: 0.9rem; text-transform: uppercase; display: block;">📍 Location:</strong>
+        <span style="color: #333; font-size: 0.95rem;">Bahnhof Street, Shop No. 42 (Behind Okahandja Medical Center), Okahandja</span>
+      </div>
+      <div>
+        <strong style="color: #800020; font-size: 0.9rem; text-transform: uppercase; display: block;">📞 Direct Line / WhatsApp:</strong>
+        <span style="color: #333; font-size: 0.95rem; font-weight: bold;">+264 81 778 0406</span>
+      </div>
+    </div>
+
+    <!-- NEW SECTION: Gardening Services Banner -->
+    <section style="background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%); color: white; padding: 2.5rem; border-radius: 8px; margin-bottom: 3rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; align-items: center;">
+        <div>
+          <span style="background: #52b788; color: #081c15; padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: bold; font-size: 0.85rem; text-transform: uppercase;">Professional Lawn Care</span>
+          <h2 style="color: #ffffff; margin-top: 0.6rem; font-size: 1.8rem;">We Provide Gardening Services 🌿</h2>
+          <p style="color: #d8f3dc; line-height: 1.6; margin-top: 0.5rem;">
+            Keep your lawn looking fresh and neat all season long! We send our experienced gardeners directly to your home for weekly or monthly maintenance.
+          </p>
+          <div style="margin-top: 1.2rem; font-size: 1.2rem; font-weight: bold; color: #d4af37;">
+            Lawn Mowing & Trimming starting from as little as <span style="background: #ffffff; color: #1b4332; padding: 0.2rem 0.6rem; border-radius: 4px;">N$ 100.00</span>
+          </div>
+        </div>
+        <div style="text-align: center; background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);">
+          <h3 style="color: #ffffff; margin-top: 0; font-size: 1.2rem;">Book a Gardener</h3>
+          <p style="color: #e9d8a6; font-size: 0.9rem; margin-bottom: 1.2rem;">Weekly and monthly schedules available for homes and estates.</p>
+          <a href="contact.html?tool=Gardening%20Services" class="btn btn-gold full-width" style="display: inline-block; text-align: center; font-weight: bold;">Schedule Gardening Service &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Equipment Cards (Dynamic Top 3) -->
+    <div class="section-header">
+      <h2>Popular Equipment</h2>
+      <p>Heavy-duty gear available for daily rental.</p>
+    </div>
+
+    <div id="popular-cards-container" class="services-grid">
+      <!-- Dynamic cards load here -->
+    </div>
+
+    <!-- Complete Rental Rates Table -->
+    <div class="section-header" style="margin-top: 4rem;">
+      <h2>Complete Tool Rental Rates</h2>
+      <p>Daily rental prices (Per Day / P/D) for all available equipment.</p>
+    </div>
+
+    <div style="overflow-x: auto; background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left;">
+        <thead>
+          <tr style="background: #0d1b2a; color: white;">
+            <th style="padding: 1rem;">IMAGE</th>
+            <th style="padding: 1rem;">EQUIPMENT ITEM</th>
+            <th style="padding: 1rem;">DAILY RATE (P/D)</th>
+            <th style="padding: 1rem;">ACTION</th>
+          </tr>
+        </thead>
+        <tbody id="tool-table-body">
+          <!-- Dynamic table rows load here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Tools For Sale Section -->
+    <section style="margin-top: 4rem; background: #ffffff; padding: 2.5rem; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <span style="background: #fff3cd; color: #856404; padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: bold; font-size: 0.85rem; text-transform: uppercase;">Brand New Power Tools</span>
+        <h2 style="color: #0d1b2a; margin-top: 0.5rem; font-size: 1.8rem;">Tools For Sale</h2>
+        <p style="color: #666; max-width: 600px; margin: 0.5rem auto 0;">Purchase high-performance power tools directly from our Okahandja shop.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+        
+        <!-- Tool 1 -->
+        <div class="card" style="border: 1px solid #e2e8f0; background: #fff;">
+          <div class="pricing-badge" style="background: #d4af37; color: #0d1b2a;">N$499.00</div>
+          <div class="card-body">
+            <h3 style="margin-top: 0.5rem; font-size: 1.1rem; color: #0d1b2a;">Angle Grinder</h3>
+            <p style="color: #666; font-size: 0.9rem;">Compact and powerful grinding and cutting tool.</p>
+          </div>
+          <div class="card-footer">
+            <a href="contact.html?tool=Angle%20Grinder%20(Purchase)" class="btn btn-burgundy full-width">Inquire to Buy &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Tool 2 -->
+        <div class="card" style="border: 1px solid #e2e8f0; background: #fff;">
+          <div class="pricing-badge" style="background: #d4af37; color: #0d1b2a;">N$499.00</div>
+          <div class="card-body">
+            <h3 style="margin-top: 0.5rem; font-size: 1.1rem; color: #0d1b2a;">Impact Drill</h3>
+            <p style="color: #666; font-size: 0.9rem;">Heavy-duty drilling and hammer-drilling action.</p>
+          </div>
+          <div class="card-footer">
+            <a href="contact.html?tool=Impact%20Drill%20(Purchase)" class="btn btn-burgundy full-width">Inquire to Buy &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Tool 3 -->
+        <div class="card" style="border: 1px solid #e2e8f0; background: #fff;">
+          <div class="pricing-badge" style="background: #d4af37; color: #0d1b2a;">N$499.00</div>
+          <div class="card-body">
+            <h3 style="margin-top: 0.5rem; font-size: 1.1rem; color: #0d1b2a;">Jigsaw 420W</h3>
+            <p style="color: #666; font-size: 0.9rem;">Precision curved and straight woodworking cuts.</p>
+          </div>
+          <div class="card-footer">
+            <a href="contact.html?tool=Jigsaw%20420W%20(Purchase)" class="btn btn-burgundy full-width">Inquire to Buy &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Tool 4 -->
+        <div class="card" style="border: 1px solid #e2e8f0; background: #fff;">
+          <div class="pricing-badge" style="background: #d4af37; color: #0d1b2a;">N$829.00</div>
+          <div class="card-body">
+            <h3 style="margin-top: 0.5rem; font-size: 1.1rem; color: #0d1b2a;">Circular Saw 1200W</h3>
+            <p style="color: #666; font-size: 0.9rem;">High-capacity circular saw for timber and boards.</p>
+          </div>
+          <div class="card-footer">
+            <a href="contact.html?tool=Circular%20Saw%201200W%20(Purchase)" class="btn btn-burgundy full-width">Inquire to Buy &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Tool 5 -->
+        <div class="card" style="border: 1px solid #e2e8f0; background: #fff;">
+          <div class="pricing-badge" style="background: #d4af37; color: #0d1b2a;">N$489.00</div>
+          <div class="card-body">
+            <h3 style="margin-top: 0.5rem; font-size: 1.1rem; color: #0d1b2a;">Mouse Sander 160W</h3>
+            <p style="color: #666; font-size: 0.9rem;">Detail sander for tight corners and smooth finishes.</p>
+          </div>
+          <div class="card-footer">
+            <a href="contact.html?tool=Mouse%20Sander%20160W%20(Purchase)" class="btn btn-burgundy full-width">Inquire to Buy &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Tool 6 -->
+        <div class="card" style="border: 1px solid #e2e8f0; background: #fff;">
+          <div class="pricing-badge" style="background: #d4af37; color: #0d1b2a;">N$399.00</div>
+          <div class="card-body">
+            <h3 style="margin-top: 0.5rem; font-size: 1.1rem; color: #0d1b2a;">Orbital Sheet Sander 150W</h3>
+            <p style="color: #666; font-size: 0.9rem;">Ideal for fast surface sanding and prep work.</p>
+          </div>
+          <div class="card-footer">
+            <a href="contact.html?tool=Orbital%20Sheet%20Sander%20150W%20(Purchase)" class="btn btn-burgundy full-width">Inquire to Buy &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Tool 7 -->
+        <div class="card" style="border: 1px solid #e2e8f0; background: #fff;">
+          <div class="pricing-badge" style="background: #d4af37; color: #0d1b2a;">N$399.00</div>
+          <div class="card-body">
+            <h3 style="margin-top: 0.5rem; font-size: 1.1rem; color: #0d1b2a;">Heat Gun 2000W</h3>
+            <p style="color: #666; font-size: 0.9rem;">Heavy-duty dual temperature heat output.</p>
+          </div>
+          <div class="card-footer">
+            <a href="contact.html?tool=Heat%20Gun%202000W%20(Purchase)" class="btn btn-burgundy full-width">Inquire to Buy &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Tool 8 -->
+        <div class="card" style="border: 1px solid #e2e8f0; background: #fff;">
+          <div class="pricing-badge" style="background: #d4af37; color: #0d1b2a;">N$1,099.00</div>
+          <div class="card-body">
+            <h3 style="margin-top: 0.5rem; font-size: 1.1rem; color: #0d1b2a;">Inverter Welder</h3>
+            <p style="color: #666; font-size: 0.9rem;">Portable, high-efficiency arc welding unit.</p>
+          </div>
+          <div class="card-footer">
+            <a href="contact.html?tool=Inverter%20Welder%20(Purchase)" class="btn btn-burgundy full-width">Inquire to Buy &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Omutima Homes & Okahandja Tool Hire. All Rights Reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

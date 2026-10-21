@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omutima Homes | Property Developments & Okahandja Tool Hire</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Supabase SDK & Config -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <a href="index.html" class="logo">Omutima <span>Homes</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="developments.html">Developments</a></li>
+      <li><a href="tool-hire.html">Okahandja Tool Hire</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <span class="hero-badge">The Foundation For Your Future</span>
+      <h1>Building Homes & Equipping Okahandja</h1>
+      <p>Your trusted Namibian partner for residential property developments, construction equipment hire, power tool sales, and professional gardening services.</p>
+      <div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="developments.html" class="btn btn-gold">Explore Developments &rarr;</a>
+        <a href="tool-hire.html" class="btn btn-burgundy">Tool Hire & Sales &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+    
+    <!-- Services & Offerings Section -->
+    <div class="section-header">
+      <h2>Our Core Services</h2>
+      <p>Quality housing, reliable equipment, and professional property solutions.</p>
+    </div>
+
+    <div class="services-grid">
+      <!-- Service 1: Property Developments -->
+      <article class="card card-featured">
+        <div class="card-badge">Real Estate</div>
+        <div class="card-body">
+          <div class="card-icon gold-icon">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+          </div>
+          <h3>Property Developments</h3>
+          <p>Modern 2 & 3 bedroom family homes and Plot & Plan options across Okahandja and prime Namibian locations.</p>
+        </div>
+        <div class="card-footer">
+          <a href="developments.html" class="btn btn-gold full-width">View Properties &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Service 2: Tool & Equipment Hire -->
+      <article class="card">
+        <div class="card-body">
+          <div class="card-icon navy-icon">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+            </svg>
+          </div>
+          <h3>Okahandja Tool Hire</h3>
+          <p>Well-maintained power tools, generators, and heavy-duty machinery available for daily rental and retail purchase.</p>
+        </div>
+        <div class="card-footer">
+          <a href="tool-hire.html" class="btn btn-burgundy full-width">Browse Equipment &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Service 3: Gardening Services -->
+      <article class="card">
+        <div class="card-body">
+          <div class="card-icon burgundy-icon">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+            </svg>
+          </div>
+          <h3>Gardening & Lawn Care</h3>
+          <p>Professional lawn mowing and trimming starting from N$100.00. Weekly and monthly home care visits available[cite: 14].</p>
+        </div>
+        <div class="card-footer">
+          <a href="contact.html?tool=Gardening%20Services" class="btn btn-burgundy full-width">Book Lawn Care &rarr;</a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Featured Tool Rental Highlights (Dynamic Container) -->
+    <div class="section-header" style="margin-top: 4rem;">
+      <h2>Popular Tool Rentals</h2>
+      <p>Top gear ready for site work today.</p>
+    </div>
+
+    <div id="popular-cards-container" class="services-grid">
+      <!-- Dynamic cards loaded via js/main.js -->
+    </div>
+
+    <!-- Homeownership Teaser Banner -->
+    <section style="margin-top: 4rem; background: #0d1b2a; color: white; padding: 2.5rem; border-radius: 8px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <span style="background: #d4af37; color: #0d1b2a; padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: bold; font-size: 0.85rem; text-transform: uppercase;">Own Your Dream Home</span>
+      <h2 style="color: #ffffff; margin-top: 0.8rem; font-size: 1.8rem;">Earning from N$8,000 / month? You Can Qualify For Pre-Approval![cite: 15]</h2>
+      <p style="color: #cbd5e1; max-width: 650px; margin: 0.5rem auto 1.5rem; line-height: 1.6;">
+        We guide you through certified ID requirements, bank statements, and house selection—and we handle all the bank paperwork free of charge[cite: 15]!
+      </p>
+      <a href="developments.html" class="btn btn-gold" style="display: inline-block;">View Homeownership Guide &rarr;</a>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Omutima Homes & Okahandja Tool Hire. All Rights Reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
